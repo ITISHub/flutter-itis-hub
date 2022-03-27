@@ -18,12 +18,12 @@ class DeveloperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final imagePath = ApiClient.host + developer.avatarPath;
     return Container(
-      height: 80.0,
+      height: 88.0,
       child: Row(
         children: [
           Container(
-              height: 80.0,
-              width: 80.0,
+              height: 88.0,
+              width: 88.0,
               child: Card(
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -34,39 +34,43 @@ class DeveloperWidget extends StatelessWidget {
           Container(
               margin: EdgeInsets.only(left: 24.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     (developer.name + " " + developer.surname).trim(),
                     style: textTitle.copyWith(fontWeight: FontWeight.w500),
                     textAlign: TextAlign.start,
                   ),
-                  // Text(
-                  //   developer.about.trim(),
-                  //   style: textTitle,
-                  //   textAlign: TextAlign.start,
-                  // )
-                  SizedBox(height: 10.0),
-                  Row(
-                    children: [
-                      InkWell(
-                          onTap: () async {
-                            if (!await launch(developer.githubUrl))
-                              throw 'Could not launch conspectus';
-                          },
-                          child: Icon(Icons.code, color: colorPrimary)),
-                      InkWell(
-                          onTap: () async {
-                            if (!await launch(developer.telegramUrl))
-                              throw 'Could not launch conspectus';
-                          },
-                          child: Icon(Icons.telegram, color: colorPrimary)),
-                      InkWell(
-                          onTap: () async {
-                            if (!await launch(developer.vkUrl))
-                              throw 'Could not launch conspectus';
-                          },
-                          child: Icon(Icons.person, color: colorPrimary)),
-                    ],
+                  Text(
+                    developer.about.trim(),
+                    style: textSubtitle,
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(height: 4.0),
+                  Container(
+                    height: 32.0,
+                    child: Row(
+                      children: [
+                        InkWell(
+                            onTap: () async {
+                              if (!await launch(developer.githubUrl))
+                                throw 'Could not launch conspectus';
+                            },
+                            child: Icon(Icons.code, color: colorPrimary, size: 32.0)),
+                        InkWell(
+                            onTap: () async {
+                              if (!await launch(developer.telegramUrl))
+                                throw 'Could not launch conspectus';
+                            },
+                            child: Icon(Icons.telegram, color: colorPrimary, size: 32.0)),
+                        InkWell(
+                            onTap: () async {
+                              if (!await launch(developer.vkUrl))
+                                throw 'Could not launch conspectus';
+                            },
+                            child: Icon(Icons.person, color: colorPrimary, size: 32.0)),
+                      ],
+                    ),
                   )
                 ],
               ))

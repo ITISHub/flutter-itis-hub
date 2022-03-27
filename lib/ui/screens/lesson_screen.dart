@@ -56,7 +56,10 @@ class LessonScreenState extends State<LessonScreen> {
                     controller: _controller,
                     aspectRatio: 16 / 9,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 32),
+                  Html(data: lesson.description, style: {
+                    "*": Style(fontSize: FontSize(17.0), color: Colors.white)
+                  })
                 ],
               ),
             ))
